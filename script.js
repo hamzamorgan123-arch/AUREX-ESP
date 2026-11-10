@@ -1,10 +1,1 @@
-const menuButton = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.nav-links');
-menuButton.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
-  menuButton.setAttribute('aria-expanded', String(open));
-});
-nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-  nav.classList.remove('open');
-  menuButton.setAttribute('aria-expanded', 'false');
-}));
+async function loadSite(){let data={events:[],news:[],discord:"",phone:"",email:"aurexesports@gmail.com"};try{const r=await fetch("site-data.json",{cache:"no-store"});if(r.ok)data={...data,...await r.json()}}catch(e){}const ev=document.getElementById("event-list"),nw=document.getElementById("news-list");ev.innerHTML=data.events.length?data.events.map(x=>`<article class="event-card"><span class="tag">${safe(x.type||"Scrim")}</span><h3>${safe(x.title)}</h3><div class="event-meta">${safe(x.date||"Date TBA")} · ${safe(x.time||"Time TBA")}<br>${safe(x.game||"Game TBA")} ${x.region?"· "+safe(x.region):""}</div><p class="muted">${safe(x.details||"More details coming soon.")}</p></article>`).join(""):'<p class="muted">No events announced yet. Check back soon.</p>';nw.innerHTML=data.news.length?data.news.map(x=>`<article class="news-card"><span class="tag">${safe(x.date||"AUREX UPDATE")}</span><h3>${safe(x.title)}</h3><p class="muted">${safe(x.text)}</p></article>`).join(""):'<p class="muted">Team news will appear here.</p>';const d=document.getElementById("discord-link");if(data.discord){d.href=data.discord;d.textContent="JOIN OUR DISCORD"}const email=document.getElementById("email-link");if(data.email){email.href="mailto:"+data.email;email.textContent="EMAIL: "+data.email}if(data.phone){const p=document.createElement("p");p.className="small muted";p.textContent="Public team contact: "+data.phone;document.querySelector("#contact").appendChild(p)}document.getElementById("year").textContent=new Date().getFullYear()}function safe(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}loadSite();
