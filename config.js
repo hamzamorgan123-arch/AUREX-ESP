@@ -1,2 +1,2 @@
-window.SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-window.SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+window.SUPABASE_URL = "sb_publishable_8h-xqyzMPiKfLpJOBodqcA_Jtd578lb";
+window.SUPABASE_ANON_KEY = "sb_publishable_8h-xqyzMPiKfLpJOBodqcA_Jtd578lb";
