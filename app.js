@@ -1,6 +1,6 @@
 /* AUREX-ESP frontend. Configure Supabase in the CONFIG block below. */
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const SUPABASE_URL = 'https://husbdrdztbkdjzzbwmul.supabase.co/rest/v1/';
+const SUPABASE_ANON_KEY = 'sb_publishable_Xw_AiE81sQ-AnaUTfaoSMQ_ozuVlbPP';
 const configured = SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('YOUR_') && SUPABASE_ANON_KEY.length > 30 && !SUPABASE_ANON_KEY.includes('YOUR_');
 const db = configured && window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 const $ = id => document.getElementById(id);
